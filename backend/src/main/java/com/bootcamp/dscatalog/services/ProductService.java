@@ -12,8 +12,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bootcamp.dscatalog.DTO.CategoryDTO;
 import com.bootcamp.dscatalog.DTO.ProductDTO;
+import com.bootcamp.dscatalog.entities.Category;
 import com.bootcamp.dscatalog.entities.Product;
+import com.bootcamp.dscatalog.repositories.CategoryRepository;
 import com.bootcamp.dscatalog.repositories.ProductRepository;
 import com.bootcamp.dscatalog.services.exceptions.DatabaseException;
 import com.bootcamp.dscatalog.services.exceptions.ResourceNotFoundException;
@@ -23,6 +26,9 @@ public class ProductService {
 
 	@Autowired
 	private ProductRepository productRepository;
+	
+	@Autowired
+	private CategoryRepository categoryRepository;
 	
 	@Transactional(readOnly = true)
 	public Page<ProductDTO> findAllPaged(PageRequest pageRequest) {
@@ -38,20 +44,24 @@ public class ProductService {
 	}
 	
 	@Transactional
-	public ProductDTO insert(ProductDTO produtctdto) {
-		Product entity = new Product();
-		entity.setName(produtctdto.getName());
+	public ProductDTO insert(ProductDTO productdto) {
+		
+		Product entity = new Product();		
+		copyDtoToEntity(productdto, entity);	
+		System.out.println(productdto);
 		entity = productRepository.save(entity);
 		
 		
 		return new ProductDTO(entity);
 	}
 
+	
+
 	@Transactional
 	public ProductDTO update(Long id, ProductDTO dto) {
 		try {
 			Product entity = productRepository.getOne(id);
-			entity.setName(dto.getName());
+			copyDtoToEntity(dto, entity);	
 			entity = productRepository.save(entity);
 			return new ProductDTO(entity);
 			
@@ -71,7 +81,22 @@ public class ProductService {
 		
 	}
 	
-	
-	
+	private void copyDtoToEntity(ProductDTO productdto, Product entity) {
+		
+		entity.setName(productdto.getName());
+		entity.setDescription(productdto.getDescription());
+		entity.setDate(productdto.getDate());
+		entity.setImgUrl(productdto.getImgUrl());
+		entity.setPrice(productdto.getPrice());		
+		
+		
+		for(CategoryDTO cat : productdto.getCategories() ) {
+			
+			Category category = categoryRepository.getOne(cat.getID());
+			entity.getCategories().add(category);
+		}
+			
+		
+	}
 	
 }

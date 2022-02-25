@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name= "tb_category")
@@ -20,7 +21,8 @@ public class Category implements Serializable {
 	
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@NotNull
 	private Long id;
 	
 	@Column

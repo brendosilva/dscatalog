@@ -92,6 +92,14 @@ public class ProductDTO implements Serializable {
 	public List<CategoryDTO> getCategories() {
 		return categories;
 	}
+
+	@Override
+	public String toString() {
+		return "ProductDTO [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
+				+ ", imgUrl=" + imgUrl + ", date=" + date + ", categories=" + categories + "]";
+	}
+	
+	
 	
 	
 	
