@@ -89,13 +89,11 @@ public class ProductService {
 		entity.setImgUrl(productdto.getImgUrl());
 		entity.setPrice(productdto.getPrice());		
 		
-		
-		for(CategoryDTO cat : productdto.getCategories() ) {
-			
+		entity.getCategories().clear();
+		for(CategoryDTO cat : productdto.getCategories() ) {			
 			Category category = categoryRepository.getOne(cat.getID());
 			entity.getCategories().add(category);
-		}
-			
+		}		
 		
 	}
 	
