@@ -1,4 +1,4 @@
-package com.bootcamp.dscatalog.DTO;
+package com.bootcamp.dscatalog.dto;
 
 import java.io.Serializable;
 
@@ -8,24 +8,24 @@ public class CategoryDTO  implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Long Id;
+	private Long id;
 	private String name;
 	
 	public CategoryDTO() {}
 	
 	public CategoryDTO(Long id, String name) {
 		super();
-		Id = id;
+		this.id = id;
 		this.name = name;
 	}
 	
 	public CategoryDTO(Category categoryEntity) {
-		this.Id = categoryEntity.getId();
+		this.id = categoryEntity.getId();
 		this.name = categoryEntity.getName();
 	}
 
 	public Long getID() {
-		return this.Id;
+		return this.id;
 	}
 	
 
@@ -39,7 +39,7 @@ public class CategoryDTO  implements Serializable {
 
 	@Override
 	public String toString() {
-		return "CategoryDTO [Id=" + Id + ", name=" + name + "]";
+		return "CategoryDTO [Id=" + id + ", name=" + name + "]";
 	}
 	
 	

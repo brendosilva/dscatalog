@@ -1,4 +1,4 @@
-package com.bootcamp.dscatalog.DTO;
+package com.bootcamp.dscatalog.dto;
 
 import java.io.Serializable;
 import java.time.Instant;

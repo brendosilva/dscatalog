@@ -12,7 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bootcamp.dscatalog.DTO.CategoryDTO;
+import com.bootcamp.dscatalog.dto.CategoryDTO;
 import com.bootcamp.dscatalog.entities.Category;
 import com.bootcamp.dscatalog.repositories.CategoryRepository;
 import com.bootcamp.dscatalog.services.exceptions.DatabaseException;

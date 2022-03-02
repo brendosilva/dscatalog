@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.bootcamp.dscatalog.DTO.ProductDTO;
+import com.bootcamp.dscatalog.dto.ProductDTO;
 import com.bootcamp.dscatalog.services.ProductService;
 
 @RestController

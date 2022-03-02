@@ -12,8 +12,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bootcamp.dscatalog.DTO.CategoryDTO;
-import com.bootcamp.dscatalog.DTO.ProductDTO;
+import com.bootcamp.dscatalog.dto.CategoryDTO;
+import com.bootcamp.dscatalog.dto.ProductDTO;
 import com.bootcamp.dscatalog.entities.Category;
 import com.bootcamp.dscatalog.entities.Product;
 import com.bootcamp.dscatalog.repositories.CategoryRepository;
@@ -46,9 +46,9 @@ public class ProductService {
 	@Transactional
 	public ProductDTO insert(ProductDTO productdto) {
 		
-		Product entity = new Product();		
+		Product entity = new Product();	
 		copyDtoToEntity(productdto, entity);	
-		System.out.println(productdto);
+		
 		entity = productRepository.save(entity);
 		
 		
