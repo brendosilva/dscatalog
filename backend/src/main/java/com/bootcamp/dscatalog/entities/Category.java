@@ -33,6 +33,12 @@ public class Category implements Serializable {
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant updatedAt;
+	
+	public Category() {}
+	public Category(Long id, String name) {
+		this.id = id;
+		this.name = name;
+	}
 
 	
 	public Long getId( ) {
