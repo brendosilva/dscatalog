@@ -1,5 +1,8 @@
 package com.bootcamp.dscatalog.dto;
 
+import com.bootcamp.dscatalog.services.validation.UserInsertValid;
+
+@UserInsertValid
 public class UserInsertDTO extends UserDTO{
 
     private String password;
