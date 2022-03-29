@@ -22,6 +22,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.bootcamp.dscatalog.dto.ProductDTO;
 import com.bootcamp.dscatalog.services.ProductService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/products")
 public class ProductResource {
@@ -45,7 +47,7 @@ public class ProductResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<ProductDTO> insert(@RequestBody ProductDTO productDTO){
+	public ResponseEntity<ProductDTO> insert(@Valid @RequestBody ProductDTO productDTO){
 		
 		productDTO = productService.insert(productDTO);
 		
@@ -67,7 +69,7 @@ public class ProductResource {
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<ProductDTO> delete(@PathVariable Long id) {
+	public ResponseEntity<ProductDTO> delete(@Valid @PathVariable Long id) {
 		productService.delete(id);	
 		
 		return ResponseEntity.noContent().build();
