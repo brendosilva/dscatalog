@@ -7,6 +7,7 @@ import javax.persistence.EntityNotFoundException;
 import com.bootcamp.dscatalog.dto.RoleDTO;
 import com.bootcamp.dscatalog.dto.UserDTO;
 import com.bootcamp.dscatalog.dto.UserInsertDTO;
+import com.bootcamp.dscatalog.dto.UserUpdateDTO;
 import com.bootcamp.dscatalog.entities.Role;
 import com.bootcamp.dscatalog.entities.User;
 import com.bootcamp.dscatalog.repositories.RoleRepository;
@@ -62,18 +63,18 @@ public class UserService {
 		return new UserDTO(entity);
 	}
 
-	
+
 
 	@Transactional
-	public UserDTO update(Long id, UserDTO dto) {
+	public UserDTO update(Long id, UserUpdateDTO dto) {
 		try {
 			User entity = userRepository.getOne(id);
-			copyDtoToEntity(dto, entity);	
+			copyDtoToEntity(dto, entity);
 			entity = userRepository.save(entity);
 			return new UserDTO(entity);
-			
-		}catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("Id not found "+id);
+		}
+		catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException("Id not found " + id);
 		}
 	}
 
