@@ -55,9 +55,6 @@ public class ProductResource {
 				.path("/{id}")
 				.buildAndExpand(productDTO.getId())
 				.toUri();
-		
-		
-		
 		return ResponseEntity.created(uri).body(productDTO);
 	}
 	
@@ -74,8 +71,5 @@ public class ProductResource {
 		
 		return ResponseEntity.noContent().build();
 	}
-
-	
-	
 	
 }
