@@ -94,7 +94,7 @@ public class User implements UserDetails, Serializable {
 
     @Override
     public String getUsername() {
-        return this.getUsername();
+        return email;
     }
 
     @Override
